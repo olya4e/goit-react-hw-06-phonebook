@@ -1,14 +1,14 @@
-// import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
-import {filterContact} from 'redux/actions.js'
+import {filterContact} from 'redux/filterSlice';
+import {getFilter} from 'redux/selectors';
 import css from './Filter.module.css'
+
 export const Filter = () => {  
-    const filter = useSelector(state => state.contactsReducer.filter)
+    const filter = useSelector(getFilter)
     const dispatch= useDispatch()
 
      const handleChangeFilter = (e) => {
          dispatch(filterContact(e.target.value))
-         console.log(e.target.value);
     
   }
     return (
@@ -25,7 +25,3 @@ export const Filter = () => {
         />
     )
 }
-// Filter.propTypes = {
-//     value: PropTypes.string.isRequired,
-//     handleChangeFilter: PropTypes.func.isRequired,
-// }
